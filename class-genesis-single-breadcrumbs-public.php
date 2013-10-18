@@ -64,7 +64,7 @@ class Genesis_Single_Breadcrumbs_Public {
 	 * @return string        Amended markup for the whole breadcrumb trail.
 	 */
 	public function filter_single_crumb( $trail, $args ) {
-		if ( ! is_single() )
+		if ( ! is_singular() )
 			return $trail;
 
 		$new_crumb = genesis_get_custom_field( '_genesis_single_breadcrumbs_title' );
@@ -89,16 +89,17 @@ class Genesis_Single_Breadcrumbs_Public {
 	}
 
 	/**
-	 * Disable the breadcrumbs, by unhooking genesis_do_breadcrumbs from whereever it is currentl hooked.
+	 * Disable the breadcrumbs, by unhooking genesis_do_breadcrumbs from whereever it is currently hooked.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @uses Genesis_Single_breadcrumbs_Public::get_hook_for_callback()
 	 */
 	public function disable_breadcrumbs() {
-		$hook_data = $this->get_hook_for_callback( 'genesis_do_breadcrumbs' );
-		if ( is_single() && genesis_get_custom_field( '_genesis_single_breadcrumbs_disable' ) )
+		if ( is_singular() && genesis_get_custom_field( '_genesis_single_breadcrumbs_disable' ) ) {
+			$hook_data = $this->get_hook_for_callback( 'genesis_do_breadcrumbs' );
 			remove_action( $hook_data['hook'], 'genesis_do_breadcrumbs', $hook_data['priority'] );
+		}
 	}
 
 	/**
