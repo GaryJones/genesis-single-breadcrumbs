@@ -24,12 +24,12 @@ class Genesis_Single_Breadcrumbs {
 	 *
 	 * @var    string VERSION Plugin version.
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.1.0';
 
 	/**
 	 * Unique identifier for your plugin.
 	 *
-	 * Use this value (not the variable name) as the text domain when internationalizing strings of text. It should
+	 * Use this value (not the constant name) as the text domain when internationalizing strings of text. It should
 	 * match the Text Domain file header in the main plugin file.
 	 *
 	 * @since    1.0.0
@@ -201,7 +201,7 @@ class Genesis_Single_Breadcrumbs {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( $domain, false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 }
