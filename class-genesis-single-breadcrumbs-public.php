@@ -32,7 +32,8 @@ class Genesis_Single_Breadcrumbs_Public {
 	 * @since     1.0.0
 	 */
 	private function __construct() {
-		add_filter( 'genesis_single_crumb', array( $this, 'filter_single_crumb' ), 10, 2 );
+		add_filter( 'genesis_single_crumb', array( $this, 'filter_crumb' ), 10, 2 );
+		add_filter( 'genesis_page_crumb', array( $this, 'filter_crumb' ), 10, 2 );
 		add_action( 'genesis_before', array( $this, 'disable_breadcrumbs' ) );
 	}
 
@@ -63,7 +64,7 @@ class Genesis_Single_Breadcrumbs_Public {
 	 *
 	 * @return string        Amended markup for the whole breadcrumb trail.
 	 */
-	public function filter_single_crumb( $trail, $args ) {
+	public function filter_crumb( $trail, $args ) {
 		if ( ! is_singular() )
 			return $trail;
 
@@ -79,13 +80,16 @@ class Genesis_Single_Breadcrumbs_Public {
 	/**
 	 * Remove Post Title from Breadcrumb.
 	 *
-	 * Takes a substring of the breadcrumb trail, starting at 0, with a length of up to and including the last
+	 * Takes a substring of the breadcrumb trail, starting at 0, with a length of up to last
 	 * occurrence of the separator string.
 	 *
 	 * @since 1.0.0
 	 */
 	protected function strip_last_crumb( $trail, $separator ) {
-		return mb_substr( $trail, 0, mb_strrpos( $trail, $separator ) + mb_strlen( $separator ) );
+		$trimmed_trail = mb_substr( $trail, 0, (int) mb_strrpos( $trail, $separator ) );
+		if ( $trimmed_trail )
+		  	$trimmed_trail .= $separator;
+		return $trimmed_trail;
 	}
 
 	/**
