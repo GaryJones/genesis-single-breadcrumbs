@@ -12,7 +12,7 @@
  * Plugin Name:       Genesis Single Breadcrumbs
  * Plugin URI:        http://gamajo.com/
  * Description:       Adds per-entry options for breadcrumbs when a Genesis child theme is active.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Gary Jones
  * Author URI:        http://gamajo.com/
  * Text Domain:       genesis-single-breadcrumbs

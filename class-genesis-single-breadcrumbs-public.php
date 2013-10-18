@@ -152,7 +152,7 @@ class Genesis_Single_Breadcrumbs_Public {
 				$crumbs,
 				$this->get_breadcrumb_link(
 					get_permalink( $ancestor ),
-					sprintf( __( 'View %s', 'genesis' ), get_the_title( $ancestor ) ),
+					sprintf( __( 'View %s', 'genesis-single-breadcrumbs' ), get_the_title( $ancestor ) ),
 					$this->get_breadcrumb_title( $ancestor ),
 					false,
 					$args
@@ -170,7 +170,8 @@ class Genesis_Single_Breadcrumbs_Public {
 	/**
 	 * Return anchor link for a single crumb.
 	 *
-	 * Taken straight from Genesis 2.0.1.
+	 * Taken straight from Genesis 2.0.1, but with an extra parameter, so that the args can be passed through to the
+	 * filter, as in Genesis core.
 	 *
 	 * @since 1.1.0
 	 *
@@ -192,7 +193,6 @@ class Genesis_Single_Breadcrumbs_Public {
 			$link .= $sep;
 
 		return $link;
-
 	}
 
 	/**
