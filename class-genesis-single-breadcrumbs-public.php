@@ -82,7 +82,7 @@ class Genesis_Single_Breadcrumbs_Public {
 		$custom_field = get_post_meta( $post_id, '_genesis_single_breadcrumbs_title', true );
 
 		if ( ! $custom_field )
-			return '';
+			return get_the_title( $post_id );
 
 		//* Return custom field, slashes stripped, sanitized if string
 		return is_array( $custom_field ) ? stripslashes_deep( $custom_field ) : stripslashes( wp_kses_decode_entities( $custom_field ) );
