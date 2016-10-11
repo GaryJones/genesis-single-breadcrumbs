@@ -14,8 +14,14 @@ It supports amending and disabling Genesis breadcrumbs that have been moved from
 _Per-entry breadcrumb options._
 
 ## Requirements
- * WordPress 3.6
- * Genesis 2.0
+
+ * WordPress 3.6.0
+ * Genesis 2.0.0
+
+## Tested Up To
+
+ * WordPress 4.7.0
+ * Genesis 2.4.2
 
 ## Installation
 
